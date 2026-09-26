@@ -1,0 +1,117 @@
+IBM SkillsBuild
+Data Analytics with AI
+PROJECT REPORT
+
+Telecom Customer Churn Analysis
+and AI-Based Churn Prediction
+
+Academic Internship 2026
+AICTE | IBM SkillsBuild | BharatCares
+
+Student Name: Manish Rajkumar Shekhawat
+
+ 
+1. Executive Summary
+Customer churn is an important business problem for telecommunications providers because customers who leave reduce recurring revenue and may increase the cost of acquiring replacement customers. This project applies data analytics and machine learning to a publicly available Telco Customer Churn dataset. The work covers data preparation, exploratory analysis, visualization, feature engineering, classification, model evaluation, and business-oriented interpretation.
+The analysis investigates customer tenure, charges, contracts, internet services, payment methods, support services, and other customer attributes. Three classification algorithms—Logistic Regression, Decision Tree, and Random Forest—are trained and compared using accuracy, precision, recall, F1-score, and ROC-AUC. The complete implementation is provided in the accompanying Jupyter Notebook.
+2. Project Objectives
+•	Understand the structure and quality of the telecom customer dataset.
+•	Clean and preprocess the data for reliable analysis and modeling.
+•	Explore patterns associated with customer churn.
+•	Visualize important relationships between customer characteristics and churn.
+•	Engineer useful analytical features such as tenure groups and total service count.
+•	Build and compare multiple machine-learning classification models.
+•	Evaluate models using several complementary classification metrics.
+•	Translate analytical findings into practical, business-oriented recommendations.
+3. Problem Statement
+The project aims to determine which customer characteristics are associated with churn and whether historical customer attributes can be used to predict churn. The intended analytical use is to help a telecommunications business identify customer segments that may warrant further investigation or retention analysis.
+4. Dataset Description
+The project uses the Telco Customer Churn dataset published on Kaggle. The Kaggle dataset describes it as an IBM Sample Data Set and states that it contains 7,043 customers and 21 columns, with Churn as the target variable. It contains demographic information, subscribed services, account information, charges, tenure, and whether a customer left within the last month.
+Dataset source: https://www.kaggle.com/datasets/blastchar/telco-customer-churn
+5. Key Variables
+Variable	Type	Description
+customerID	Identifier	Unique customer identifier; excluded from predictive modeling.
+gender	Categorical	Customer gender.
+SeniorCitizen	Binary numeric	Whether the customer is classified as a senior citizen.
+Partner	Categorical	Whether the customer has a partner.
+Dependents	Categorical	Whether the customer has dependents.
+tenure	Numeric	Number of months the customer has stayed with the company.
+InternetService	Categorical	Customer internet service type.
+OnlineSecurity	Categorical	Online security subscription status.
+TechSupport	Categorical	Technical support subscription status.
+Contract	Categorical	Customer contract type.
+PaymentMethod	Categorical	Customer payment method.
+MonthlyCharges	Numeric	Monthly amount charged to the customer.
+TotalCharges	Numeric	Total amount charged over the customer relationship.
+Churn	Target	Whether the customer churned: Yes or No.
+6. Methodology
+1.	Load the CSV dataset using Pandas.
+2.	Inspect shape, data types, descriptive statistics, duplicates, and missing values.
+3.	Convert TotalCharges to numeric and handle invalid/missing values.
+4.	Remove duplicate records where applicable.
+5.	Perform exploratory analysis of churn and customer characteristics.
+6.	Create visualizations to compare churn across important customer groups.
+7.	Engineer tenure groups and a total-services feature.
+8.	Separate the target variable from predictive features.
+9.	Split the data into training and test sets using stratification.
+10.	Encode categorical variables and scale numerical variables inside a preprocessing pipeline.
+11.	Train Logistic Regression, Decision Tree, and Random Forest classifiers.
+12.	Compare models using accuracy, precision, recall, F1-score, and ROC-AUC.
+13.	Inspect the selected model with a classification report and confusion matrix.
+14.	Interpret model feature importance when a tree-based model is selected.
+15.	Summarize business-oriented insights and project limitations.
+7. Exploratory Data Analysis
+Exploratory Data Analysis was performed to understand the distribution of churn and identify customer segments with different churn patterns. The notebook visualizes churn distribution, numerical feature distributions, contract type, internet service, payment method, tenure, monthly charges, and service usage.
+•	Churn distribution is examined to understand the class balance.
+•	Tenure is compared between churned and non-churned customers.
+•	Monthly charges are compared across churn status.
+•	Contract type is analyzed because contractual commitment can be associated with customer behavior.
+•	Internet service and payment method are examined for differences in churn rates.
+•	Security, backup, protection, and support services are analyzed to identify potentially important segments.
+•	A correlation matrix is calculated for selected numerical variables.
+8. Feature Engineering
+Two additional analytical features are created. TenureGroup converts the continuous tenure value into interpretable customer-life-stage groups. TotalServices counts selected subscribed services. These features make segment-level analysis easier and can also contribute to predictive modeling.
+9. Machine Learning Approach
+The target variable Churn is converted to a binary value: 1 for Yes and 0 for No. The dataset is divided into training and testing subsets using an 80/20 split with stratification. Numerical variables are imputed and standardized, while categorical variables are imputed and one-hot encoded. These transformations are implemented within a scikit-learn ColumnTransformer and Pipeline to reduce the risk of data leakage.
+9.1 Models
+•	Logistic Regression — a linear classification baseline that is relatively interpretable.
+•	Decision Tree — a rule-based model that can capture nonlinear relationships.
+•	Random Forest — an ensemble of decision trees designed to improve generalization and capture complex patterns.
+10. Evaluation Metrics
+Metric	Purpose
+Accuracy	Proportion of all predictions that are correct.
+Precision	Among predicted churners, proportion that actually churned.
+Recall	Among actual churners, proportion correctly identified.
+F1-score	Harmonic mean of precision and recall.
+ROC-AUC	Measures ranking/discrimination ability across classification thresholds.
+Confusion Matrix	Shows counts of true/false positives and negatives.
+11. Results and Interpretation
+The accompanying notebook calculates the exact model metrics after the dataset is supplied and the cells are executed. This report intentionally does not hard-code model scores before execution, because the final values should be taken directly from the student's executed notebook.
+The model comparison table in the notebook provides accuracy, precision, recall, F1-score, and ROC-AUC for all three classifiers. The model with the highest ROC-AUC is selected for detailed evaluation, followed by a classification report and confusion matrix.
+12. Business Insights and Recommendations
+•	Use churn analysis to identify customer segments that deserve closer retention analysis rather than treating all customers identically.
+•	Monitor customers with combinations of characteristics associated with elevated churn in the exploratory analysis.
+•	Use predictive scores as a prioritization aid for customer-service review, not as an automatic decision system.
+•	Validate proposed retention interventions through controlled experiments or follow-up measurement.
+•	Track model performance over time if the approach is deployed on new data.
+•	Review false negatives carefully because failing to identify a customer who later churns can reduce the practical value of a churn-screening system.
+13. Limitations
+•	The dataset is an educational/sample dataset and may not represent a particular telecom operator.
+•	The data is a customer snapshot rather than a complete longitudinal history.
+•	Observed associations should not be interpreted as causal effects.
+•	A model trained on this dataset may not generalize to a different population or future period.
+•	The project evaluates predictive performance on a held-out test set; real-world deployment would require additional validation, monitoring, and governance.
+14. Conclusion
+This project demonstrates a complete data analytics and AI workflow for a practical business problem. The analysis begins with data quality and exploratory analysis, progresses through feature engineering and visualization, and concludes with multiple machine-learning models and evaluation. The resulting workflow can help analysts understand customer churn patterns and investigate which customer groups may require additional retention attention.
+15. Reproducibility and Project Files
+•	Jupyter Notebook: YourName_TelecomCustomerChurn.ipynb
+•	Dependencies: requirements.txt
+•	Documentation: README.md
+•	Report: YourName_ProjectReport.docx
+•	Dataset: WA_Fn-UseC_-Telco-Customer-Churn.csv (downloaded separately from Kaggle)
+To reproduce the analysis, install the dependencies listed in requirements.txt, download the dataset from Kaggle, place the CSV beside the notebook, and run the notebook cells from top to bottom.
+16. References
+Kaggle. Telco Customer Churn — IBM Sample Data Sets. https://www.kaggle.com/datasets/blastchar/telco-customer-churn
+Scikit-learn documentation. Machine learning, preprocessing, pipelines and classification metrics. https://scikit-learn.org/
+Pandas documentation. Data analysis and manipulation in Python. https://pandas.pydata.org/
+
